@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matchify - Profile Creation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f9f9f9;
+      }
+      .container {
+        width: 400px;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+      }
+      .form-group input[type="file"] {
+        padding: 3px;
+      }
+      .btn {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      .btn:hover {
+        background-color: #45a049;
+      }
+      .success-message {
+        display: none;
+        margin-top: 20px;
+        color: green;
+        text-align: center;
+      }
+      .error-message {
+        display: none;
+        margin-top: 20px;
+        color: red;
+        text-align: center;
+      }
+      .file-errorMsg {
+        /* display: none; */
+        margin-top: 14px;
+        color: red;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Profile Creation</h2>
+      <form id="profileForm">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" required />
+        </div>
+        <div class="form-group">
+          <label for="age">Age:</label>
+          <input type="number" id="age" required />
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender:</label>
+          <select id="gender" required>
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="location">Location:</label>
+          <input type="text" id="location" required />
+        </div>
+        <div class="form-group">
+          <label for="interests">Interests:</label>
+          <input type="text" id="interests" required />
+        </div>
+        <div class="form-group">
+          <label for="profilePic">Profile Picture:</label>
+          <input type="file" id="profilePic" required />
+          <span id="fileError" class="file-errorMsg"></span>
+        </div>
+        <button type="button" class="btn" onclick="submitForm()">
+          Create Profile
+        </button>
+      </form>
+      <div id="successMessage" class="success-message">
+        Profile created successfully!
+      </div>
+      <div id="errorMessage" class="error-message">
+        One or more input fields missing. Please fill out the form completely.
+      </div>
+    </div>
+
+    <script>
+      function submitForm() {
+        const name = document.getElementById("name").value;
+        const age = document.getElementById("age").value;
+        const gender = document.getElementById("gender").value;
+        const location = document.getElementById("location").value;
+        const interests = document.getElementById("interests").value;
+        const profilePic = document.getElementById("profilePic").files[0];
+        const fileError = document.getElementById("fileError");
+
+        if (
+          !name ||
+          !age ||
+          !gender ||
+          !location ||
+          !interests ||
+          !profilePic
+        ) {
+          document.getElementById("errorMessage").style.display = "block";
+          return;
+        }
+
+        console.log(profilePic.type);
+        console.log(profilePic.name);
+
+        if (!profilePic.type.startsWith("image/")) {
+          fileError.textContent = "Please upload a valid image file.";
+          fileError.style.display = "block";
+          return;
+        } else {
+          fileError.textContent = "";
+        }
+
+        document.getElementById("successMessage").style.display = "block";
+      }
+    </script>
+  </body>
+</html>
