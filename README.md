@@ -1,7 +1,8 @@
 # Matchify - Profile Creation UI
 
 ## Overview
-This project provides a simple profile creation UI for the Matchify app. Users can input their personal details, select their gender, location, and interests, and upload a profile picture.
+This project provides a simple profile creation UI for the Matchify app.
+Users can input their personal details, select their gender, location, and interests, and upload a profile picture.
 
 ## Features
 - User-friendly interface
@@ -12,7 +13,7 @@ This project provides a simple profile creation UI for the Matchify app. Users c
 ## Installation
 1. Clone the repository:
    ```
-   git clone <repository-url>
+   git clone https://github.com/Chudy1/matchify_assessment.git
    ```
 2. Open the `index.html` file in any modern browser.
 
